@@ -29,7 +29,13 @@ public class BackgroundScroll : MonoBehaviour
 
             if (Backgrounds[i].position.x < _leftPosX)
             {
-                Backgrounds[i].position = new Vector3(Backgrounds[Backgrounds.Length - 1].position.x + _imageWidth, 0, 0);
+                int index = i - 1;
+                if(index < 0)
+                {
+                    index = Backgrounds.Length - 1;
+                }
+
+                Backgrounds[i].position = new Vector3(Backgrounds[index].position.x + _imageWidth, 0, 0);
             }
         }
     }
