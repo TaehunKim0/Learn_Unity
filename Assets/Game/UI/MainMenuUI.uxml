@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:Label tabindex="-1" text="Shooting Game" display-tooltip-when-elided="true" style="align-self: center; font-size: 100px; top: 37px;" />
+        <ui:GroupBox name="GroupBox" style="bottom: -62px; align-items: center;">
+            <ui:Button text="GameStart" display-tooltip-when-elided="true" name="GameStart" style="height: 108px; align-items: stretch; justify-content: flex-start; overflow: hidden; flex-basis: auto; width: 500px; font-size: 50px;" />
+            <ui:Button text="Exit" display-tooltip-when-elided="true" name="GameEnd" style="height: 108px; align-items: stretch; justify-content: flex-start; overflow: hidden; flex-basis: auto; width: 500px; font-size: 50px;" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

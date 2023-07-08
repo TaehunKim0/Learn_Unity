@@ -29,6 +29,7 @@ public class EnemyPattern2 : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(3f); // 1초 기다림
             GameObject player = GameObject.Find("Player");
             if (player is null)  break;
 
