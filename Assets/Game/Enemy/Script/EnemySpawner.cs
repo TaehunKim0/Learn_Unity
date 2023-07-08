@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        int spawnCount = Random.Range(1, 6);
+        int spawnCount = Random.Range(1, EnemySpawnTransform.Length);
         List<int> availablePositions = new List<int>(EnemySpawnTransform.Length);
 
         for (int i = 0; i < EnemySpawnTransform.Length; i++)
@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             int randomEnemy = Random.Range(0, Enemys.Length);
-            int randomPositionIndex = Random.Range(0, availablePositions.Count);
+            int randomPositionIndex = Random.Range(0, availablePositions.Count - 1);
             int randomPosition = availablePositions[randomPositionIndex];
 
             availablePositions.RemoveAt(randomPositionIndex);

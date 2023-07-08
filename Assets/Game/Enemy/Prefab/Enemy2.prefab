@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 2110953103
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1983416431, guid: b3c9df1ee6427c94fb6e09c47a1dcb78, type: 3}
+  m_Sprite: {fileID: -834940638, guid: b3c9df1ee6427c94fb6e09c47a1dcb78, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -162,10 +162,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2329849462077413425}
   - component: {fileID: 1666289522846731311}
-  - component: {fileID: -7050826876097807664}
+  - component: {fileID: 5606384307428861593}
   - component: {fileID: 6948253089998038793}
   m_Layer: 0
-  m_Name: Enemy1
+  m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ Transform:
   m_Children:
   - {fileID: 5744116062767307855}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1666289522846731311
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 2
   AttackDamage: 1
---- !u!114 &-7050826876097807664
+--- !u!114 &5606384307428861593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,10 +210,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8387814945843666275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acfca47943acddf44a92969152ef5308, type: 3}
+  m_Script: {fileID: 11500000, guid: a64f0770b18c2ca4a8e2fc1949a8a689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 3
+  AttackStopTime: 1
+  MoveTime: 2
+  Projectile: {fileID: 8921908486046091985, guid: 656d31ec45595a24a9dba4344386cac3, type: 3}
+  ProjectileMoveSpeed: 10
 --- !u!50 &6948253089998038793
 Rigidbody2D:
   serializedVersion: 4
