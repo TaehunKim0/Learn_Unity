@@ -17,7 +17,18 @@ public class Enemy : MonoBehaviour
     {
         if(Health <= 0)
         {
+            AddScore();
             Destroy(gameObject);
+        }
+    }
+
+    private void AddScore()
+    {
+        ScoreManager.Score += 100;
+        GameObject player = GameObject.Find("Player");
+        if (player is not null)
+        {
+            player.GetComponent<PlayerHUD>().UpdateScore();
         }
     }
 
@@ -26,6 +37,7 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.CompareTag("PlayerBullet"))
         {
             Health -= 1f;
+
             Destroy(collision.gameObject);
         }
     }

@@ -30,7 +30,7 @@ public class EnemyPattern2 : MonoBehaviour
         while (true)
         {
             GameObject player = GameObject.Find("Player");
-            if (player == null)  break;
+            if (player is null)  break;
 
             Vector3 playerPos = player.GetComponent<Transform>().position;
             Vector3 direction = playerPos - transform.position;

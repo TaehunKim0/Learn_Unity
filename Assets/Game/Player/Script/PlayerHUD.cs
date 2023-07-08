@@ -31,4 +31,10 @@ public class PlayerHUD : MonoBehaviour
     void Update()
     {
     }
+
+    public void UpdateScore()
+    {
+        Label score = HUD.rootVisualElement.Q<Label>("Score");
+        score.text = $"Á¡¼ö : {ScoreManager.Score}";
+    }
 }
