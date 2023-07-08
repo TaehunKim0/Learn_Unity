@@ -1,0 +1,13 @@
+.heart {
+    background-image: url('project://database/Assets/Sprites/Images/item.png?fileID=-1950431401&guid=9c69d1d0e54e91542a7b4513120f4ca9&type=3#item_1');
+    max-width: 40px;
+    -unity-background-scale-mode: scale-to-fit;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: flex-start;
+    align-self: auto;
+    margin-right: 10px;
+    flex-basis: 100%;
+}

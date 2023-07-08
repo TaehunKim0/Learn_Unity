@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class PlayerStatus : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Health -= 1;
+
+            GetComponent<PlayerHUD>().Hearts[Health].style.display = DisplayStyle.None;
 
             Destroy(collision.gameObject);
         }
