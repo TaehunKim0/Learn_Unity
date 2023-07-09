@@ -6,13 +6,11 @@ public class EnemyProjectileMovement : MonoBehaviour
 {
     [HideInInspector]
     public float MoveSpeed = 0f;
+    public GameObject ExplodeFX;
 
     [SerializeField]
     private float LifeTime = 3f;
-
-    public GameObject ExplodeFX;
-
-    private Vector3 Direction;
+    private Vector3 _direction;
 
     void Start()
     {
@@ -21,7 +19,7 @@ public class EnemyProjectileMovement : MonoBehaviour
 
     void Update()
     {
-        transform.position += Direction * MoveSpeed * Time.deltaTime;
+        transform.position += _direction * MoveSpeed * Time.deltaTime;
     }
 
     private void OnDestroy()
@@ -31,6 +29,6 @@ public class EnemyProjectileMovement : MonoBehaviour
 
     public void SetDirection(Vector3 direction)
     {
-        Direction = direction;
+        _direction = direction;
     }
 }

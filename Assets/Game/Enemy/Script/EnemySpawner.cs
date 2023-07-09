@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     public int MaxSpawnEnemyCount;
 
     private float _time = 0;
-    private bool _bIsCoolDown = false;
+    private bool _isCoolDown = false;
 
     void Start()
     {
@@ -21,18 +21,18 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         UpdateCoolDownTime();
-        if(false == _bIsCoolDown) SpawnEnemy();
+        if(false == _isCoolDown) SpawnEnemy();
     }
 
     void UpdateCoolDownTime()
     {
-        if (true == _bIsCoolDown)
+        if (true == _isCoolDown)
         {
             _time += Time.deltaTime;
             if (_time > CoolDownTime)
             {
                 _time = 0f;
-                _bIsCoolDown = false;
+                _isCoolDown = false;
             }
         }
     }
@@ -58,6 +58,6 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(Enemys[randomEnemy], EnemySpawnTransform[randomPosition].position, Quaternion.identity);
         }
 
-        _bIsCoolDown = true;
+        _isCoolDown = true;
     }
 }

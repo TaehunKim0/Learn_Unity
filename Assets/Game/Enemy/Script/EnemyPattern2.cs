@@ -11,7 +11,7 @@ public class EnemyPattern2 : MonoBehaviour
     public GameObject Projectile;
     public float ProjectileMoveSpeed;
 
-    private bool _bIsAttack = false;
+    private bool _isAttack = false;
 
 
     void Start()
@@ -21,7 +21,7 @@ public class EnemyPattern2 : MonoBehaviour
 
     void Update()
     {
-        if (false == _bIsAttack)
+        if (false == _isAttack)
             Move();
     }
 
@@ -42,11 +42,11 @@ public class EnemyPattern2 : MonoBehaviour
             projectile.GetComponent<EnemyProjectileMovement>().SetDirection(direction);
             projectile.GetComponent<EnemyProjectileMovement>().MoveSpeed = ProjectileMoveSpeed;
 
-            _bIsAttack = true;
+            _isAttack = true;
 
             yield return new WaitForSeconds(AttackStopTime); // 1초 기다림
 
-            _bIsAttack = false;
+            _isAttack = false;
 
             yield return new WaitForSeconds(MoveTime); // 3초 동안 움직임
         }
