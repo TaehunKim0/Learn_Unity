@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerStatus : MonoBehaviour
@@ -9,7 +10,7 @@ public class PlayerStatus : MonoBehaviour
     public int Health;
     private int MaxHealth;
 
-        void Start()
+    void Start()
     {
         SoundManager.instance.PlayBGM("Bgm1");
         MaxHealth = Health;
@@ -25,8 +26,7 @@ public class PlayerStatus : MonoBehaviour
         if(Health <= 0)
         {
             Destroy(gameObject);
-
-            // UI
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
@@ -75,7 +75,7 @@ public class PlayerStatus : MonoBehaviour
                 Health = MaxHealth;
             }
 
-            SoundManager.instance.PlaySFX("Hit");
+            SoundManager.instance.PlaySFX("TakeItem");
 
             Destroy(collision.gameObject);
         }

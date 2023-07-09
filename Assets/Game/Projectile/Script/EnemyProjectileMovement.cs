@@ -6,10 +6,12 @@ public class EnemyProjectileMovement : MonoBehaviour
 {
     [HideInInspector]
     public float MoveSpeed = 0f;
+
     public GameObject ExplodeFX;
 
     [SerializeField]
     private float LifeTime = 3f;
+
     private Vector3 _direction;
 
     void Start()

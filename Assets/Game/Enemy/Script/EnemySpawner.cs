@@ -6,9 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] Enemys;
     public Transform[] EnemySpawnTransform;
-
     public float CoolDownTime;
-
     public int MaxSpawnEnemyCount;
 
     private float _time = 0;

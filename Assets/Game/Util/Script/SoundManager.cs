@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[System.Serializable]
+[System.Serializable] // 클래스 안의 정보(변수)들이 인스펙터에 표시 될 수 있도록
 public class Sound  // 컴포넌트 추가 불가능.  MonoBehaviour 상속 안 받아서. 그냥 C# 클래스.
 {
-    public string name;  // 곡 이름
-    public AudioClip clip;  // 곡
+    public string Name;  // 곡 이름
+    public AudioClip Clip;  // 곡
 }
 
 public class SoundManager : MonoBehaviour
@@ -41,13 +41,13 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < SFXSounds.Length; i++)
         {
-            if (_name == SFXSounds[i].name)
+            if (_name == SFXSounds[i].Name)
             {
                 for (int j = 0; j < AudioSourceSFX.Length; j++)
                 {
                     if (false == AudioSourceSFX[j].isPlaying)
                     {
-                        AudioSourceSFX[j].clip = SFXSounds[i].clip;
+                        AudioSourceSFX[j].clip = SFXSounds[i].Clip;
                         AudioSourceSFX[j].Play();
                         return;
                     }
@@ -63,9 +63,9 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < BgmSounds.Length; i++)
         {
-            if (_name == BgmSounds[i].name)
+            if (_name == BgmSounds[i].Name)
             {
-                AudioSourceBgm.clip = BgmSounds[i].clip;
+                AudioSourceBgm.clip = BgmSounds[i].Clip;
                 AudioSourceBgm.Play();
                 return;
             }

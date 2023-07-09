@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Game/UI/Heart.uss?fileID=7433441132597879392&amp;guid=007c79b3f057ced42941c39f97014d67&amp;type=3#Heart" />
     <ui:GroupBox name="HeartBox" style="flex-direction: row; height: 51px; width: 100%; align-items: stretch; justify-content: flex-start; align-self: flex-start;" />
-    <ui:Label tabindex="-1" text="점수 : 0" display-tooltip-when-elided="true" name="Score" style="-unity-font: initial; -unity-font-style: normal; color: rgb(255, 0, 0);" />
+    <ui:Label tabindex="-1" text="Score : 0" display-tooltip-when-elided="true" name="Score" style="-unity-font: initial; -unity-font-style: normal; color: rgb(255, 0, 0);" />
 </ui:UXML>

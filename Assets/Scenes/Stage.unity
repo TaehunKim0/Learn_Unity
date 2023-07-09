@@ -697,6 +697,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: BgmSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: BgmSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0ace5d55bc65724e8ba217e2de197f0, type: 3}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: BgmSounds.Array.data[0].Name
+      value: Bgm1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: SFXSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9efed01bb26fac4a9d4797799a37055, type: 3}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: SFXSounds.Array.data[0].Name
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: SFXSounds.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 57c5530cda9b29745b8268955401bd5e, type: 3}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: SFXSounds.Array.data[1].Name
+      value: PlayerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: SFXSounds.Array.data[2].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ab3a3370a1248241978b395568dc7eb, type: 3}
+    - target: {fileID: 5934574110377259664, guid: 046f1d43e8effb14bb1947830796a6b9, type: 3}
+      propertyPath: SFXSounds.Array.data[2].Name
+      value: TakeItem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

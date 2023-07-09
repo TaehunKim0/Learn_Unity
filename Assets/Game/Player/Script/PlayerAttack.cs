@@ -7,8 +7,8 @@ using UnityEngine.Pool;
 public class PlayerAttack : MonoBehaviour
 {
     public float AttackCoolDown;
-    public GameObject Projectile;
     public float ProjectileMoveSpeed;
+    public GameObject Projectile;
     public Transform ProjectileSpawnTransform;
 
     private bool _isCoolDown = false;
