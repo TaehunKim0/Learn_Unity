@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float Health = 3f;
     public float AttackDamage = 1f;
+    public AudioClip HitSound;
 
     void Start()
     {
@@ -37,6 +38,8 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.CompareTag("PlayerBullet"))
         {
             Health -= 1f;
+
+            SoundManager.instance.PlaySFX("Hit");
 
             Destroy(collision.gameObject);
         }

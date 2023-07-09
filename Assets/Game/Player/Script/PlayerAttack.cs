@@ -11,9 +11,10 @@ public class PlayerAttack : MonoBehaviour
     public float ProjectileMoveSpeed;
     public Transform ProjectileSpawnTransform;
 
+    public AudioClip AttackSound;
+
     private bool _isCoolDown = false;
     private float _time = 0f;
-
 
     void Start()
     {
@@ -45,6 +46,8 @@ public class PlayerAttack : MonoBehaviour
             projectile.GetComponent<ProjectileMovement>().MoveSpeed = ProjectileMoveSpeed;
 
             _isCoolDown = true;
+
+            SoundManager.instance.PlaySFX("PlayerAttack");
         }
     }
 }

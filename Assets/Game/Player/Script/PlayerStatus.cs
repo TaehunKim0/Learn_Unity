@@ -6,10 +6,11 @@ using UnityEngine.UIElements;
 public class PlayerStatus : MonoBehaviour
 {
     public int Health;
+    public AudioClip HitSound;
 
     void Start()
     {
-        
+        SoundManager.instance.PlayBGM("Bgm1");
     }
 
     void Update()
@@ -34,6 +35,8 @@ public class PlayerStatus : MonoBehaviour
             Health -= 1;
 
             GetComponent<PlayerHUD>().Hearts[Health].style.display = DisplayStyle.None;
+
+            SoundManager.instance.PlaySFX("Hit");
 
             Destroy(collision.gameObject);
         }
