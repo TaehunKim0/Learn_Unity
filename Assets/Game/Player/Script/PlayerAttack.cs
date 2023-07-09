@@ -11,8 +11,6 @@ public class PlayerAttack : MonoBehaviour
     public float ProjectileMoveSpeed;
     public Transform ProjectileSpawnTransform;
 
-    public AudioClip AttackSound;
-
     private bool _isCoolDown = false;
     private float _time = 0f;
 

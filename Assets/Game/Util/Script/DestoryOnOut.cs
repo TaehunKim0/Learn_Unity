@@ -15,7 +15,13 @@ public class DestroyOnOut : MonoBehaviour
     {
         if (_isSpawn is true)
         {
-            Destroy(transform.parent.gameObject);
+            if (transform.parent is not null)
+            {
+                Destroy(transform.parent.gameObject);
+                return;
+            }
+
+            Destroy(transform.gameObject);
         }
     }
 

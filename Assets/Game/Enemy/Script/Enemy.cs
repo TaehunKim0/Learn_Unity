@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float Health = 3f;
     public float AttackDamage = 1f;
-    public AudioClip HitSound;
+    public GameObject HealthUpItem;
 
     void Start()
     {
@@ -19,7 +19,11 @@ public class Enemy : MonoBehaviour
         if(Health <= 0)
         {
             AddScore();
+
             Destroy(gameObject);
+
+            if (Random.Range(1, 10) == 5)
+                Instantiate(HealthUpItem, transform.position, Quaternion.identity);
         }
     }
 
@@ -43,5 +47,11 @@ public class Enemy : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        if(Random.Range(1, 10) == 5)
+            ItemManager.instance.SpawnItem(ItemName.HealthUp, transform.position);
     }
 }

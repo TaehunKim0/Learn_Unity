@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -451,25 +456,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      item_10: 490738957
-      item_2: -1205931499
-      item_13: -1385875150
-      item_6: -676607137
-      item_4: 943197716
-      item_15: -1528421065
-      item_8: 667748615
-      item_3: 57652189
-      item_14: 127177816
-      item_12: 1262135411
-      item_7: 1410478739
       item_0: 1431776695
-      item_9: 1264746037
       item_1: -1950431401
+      item_10: 490738957
       item_11: 103845070
+      item_12: 1262135411
+      item_13: -1385875150
+      item_14: 127177816
+      item_15: -1528421065
+      item_2: -1205931499
+      item_3: 57652189
+      item_4: 943197716
       item_5: 1573392986
-  spritePackingTag: 
+      item_6: -676607137
+      item_7: 1410478739
+      item_8: 667748615
+      item_9: 1264746037
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
