@@ -13,11 +13,11 @@ public class PlayerCharacter : BaseCharacter
     [SerializeField] private GameObject[] _skillPrefabs;
     #endregion
 
-    private void Start()
+    public override void Init(CharacterManager characterManager)
     {
+        base.Init(characterManager);
         InitializeSkills();
     }
-
     private void Update()
     {
         UpdateMovement();

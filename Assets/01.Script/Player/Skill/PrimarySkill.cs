@@ -16,15 +16,20 @@ public class PrimarySkill : BaseSkill
 
     void Update()
     {
+
     }
 
     public override void Activate()
     {
         base.Activate();
 
-        if(_projectile != null)
+        if(_projectile == null)
         {
-            Debug.Assert(_projectile.activeSelf);
+            Debug.Log("Projectile null");
+        }
+        if (_characterManager == null)
+        {
+            Debug.Log("_characterManager null");
         }
 
         GameObject instance = Instantiate(_projectile, _characterManager.Player.GetComponent<Transform>().position, Quaternion.identity);

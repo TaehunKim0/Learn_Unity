@@ -8,12 +8,18 @@ public class CharacterManager : BaseManager
     public BaseCharacter Player;
     private List<BaseCharacter> _enemys = new List<BaseCharacter>();
 
-    void Start()
+    public override void Init(GameManager gameManager)
     {
+        base.Init(gameManager);
         Player.Init(this);
     }
 
     void Update()
     {
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Destoryed");
     }
 }

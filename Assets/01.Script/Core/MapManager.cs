@@ -11,4 +11,9 @@ public class MapManager : BaseManager
     void Update()
     {
     }
+
+    public override void Init(GameManager gameManager)
+    {
+        base.Init(gameManager);
+    }
 }

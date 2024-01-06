@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseCharacter : MonoBehaviour
 {
     protected CharacterManager _characterManager;
-    public void Init(CharacterManager characterManager)
+    public virtual void Init(CharacterManager characterManager)
     {
         _characterManager = characterManager;
     }

@@ -445,18 +445,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5143448774431068332, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
-      propertyPath: _skillPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 393216405066534356, guid: f88415ba7746a5d47b9ab0ccedea2c32, type: 3}
-    - target: {fileID: 5143448774431068332, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
-      propertyPath: _skillPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 7910348389338375666, guid: 08e31ba22a1819e44b0e278d373d53e4, type: 3}
-    - target: {fileID: 5143448774431068332, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
-      propertyPath: _skillPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 8808732912213731881, guid: ade5b39ff63a01d4d98201a2d02135ae, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -468,5 +456,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 367472005}
   - {fileID: 55882848}
-  - {fileID: 7477482178565255007}
   - {fileID: 774044510}
+  - {fileID: 7477482178565255007}

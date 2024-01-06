@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 725667846611078816}
   - component: {fileID: 6843875108550799864}
   - component: {fileID: 503883162816897376}
-  - component: {fileID: 7284523203866147647}
+  - component: {fileID: 3465436532723216303}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16666667, y: 0.29166666}
   m_EdgeRadius: 0
---- !u!114 &7284523203866147647
+--- !u!114 &3465436532723216303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

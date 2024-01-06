@@ -15,5 +15,4 @@ public class GameManager : MonoBehaviour
         _characterManager.Init(this);
         _mapManager.Init(this);
     }
-
 }
