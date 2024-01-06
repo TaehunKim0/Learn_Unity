@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BaseCharacter : MonoBehaviour
 {
-    protected CharacterManager characterManager;
-    public void Init(CharacterManager inCharacterManager)
+    protected CharacterManager _characterManager;
+    public void Init(CharacterManager characterManager)
     {
-        characterManager = inCharacterManager;
+        _characterManager = characterManager;
     }
 }

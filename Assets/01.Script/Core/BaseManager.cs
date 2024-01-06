@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BaseManager : MonoBehaviour
 {
-    protected GameManager gameManager;
+    protected GameManager _gameManager;
     
-    public GameManager GameManager{ get{return gameManager;} }
-    public void Init(GameManager inGameManager)
+    public GameManager GameManager{ get{return _gameManager;} }
+    public void Init(GameManager gameManager)
     {
-        gameManager = inGameManager;
+        _gameManager = gameManager;
     }
 }

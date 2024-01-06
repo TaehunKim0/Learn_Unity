@@ -5,14 +5,12 @@ using UnityEngine;
 
 public class CharacterManager : BaseManager
 {
-    [SerializeField]
-    private BaseCharacter player;   
-    
-    private List<BaseCharacter> enemys = new List<BaseCharacter>();
+    public BaseCharacter Player;
+    private List<BaseCharacter> _enemys = new List<BaseCharacter>();
 
     void Start()
     {
-        player.Init(this);
+        Player.Init(this);
     }
 
     void Update()

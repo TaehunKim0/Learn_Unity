@@ -1,45 +1,87 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour
+public class PlayerCharacter : BaseCharacter
 {
-#region Movement
-    private Vector2 moveInput;
+    #region Movement
+    private Vector2 _moveInput;
     public float MoveSpeed;
-#endregion
+    #endregion
 
-#region Skills
-    private Dictionary<EnumTypes.PlayerSkill, BaseSkill> skills;
-#endregion
-    void Start()
+    #region Skills
+    private Dictionary<EnumTypes.PlayerSkill, BaseSkill> _skills;
+    [SerializeField] private GameObject[] _skillPrefabs;
+    #endregion
+
+    private void Start()
     {
         InitializeSkills();
     }
 
-    void Update()
+    private void Update()
     {
         UpdateMovement();
+        UpdateSkillInput();
     }
 
-    void UpdateMovement()
+    private void UpdateMovement()
     {
-        moveInput = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.UpArrow))     moveInput.y = 1f;
-        if (Input.GetKey(KeyCode.DownArrow))   moveInput.y = -1f;
-        if (Input.GetKey(KeyCode.LeftArrow))   moveInput.x = -1f;
-        if (Input.GetKey(KeyCode.RightArrow))  moveInput.x = 1f;
-
-        transform.Translate(new Vector3(moveInput.x, moveInput.y , 0f) * MoveSpeed * Time.deltaTime);
+        _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        transform.Translate(new Vector3(_moveInput.x, _moveInput.y, 0f) * (MoveSpeed * Time.deltaTime));
     }
 
-    void InitializeSkills()
+    private void UpdateSkillInput()
     {
-        skills = new Dictionary<EnumTypes.PlayerSkill, BaseSkill>();
-        skills.Add(EnumTypes.PlayerSkill.Primary, new PrimarySkill());
-        skills.Add(EnumTypes.PlayerSkill.Repair, new RepairSkill());
-        skills.Add(EnumTypes.PlayerSkill.Bomb, new BombSkill());
+        if (Input.GetKey(KeyCode.Z)) ActivateSkill(EnumTypes.PlayerSkill.Primary);
+        if (Input.GetKey(KeyCode.X)) ActivateSkill(EnumTypes.PlayerSkill.Repair);
+        if (Input.GetKey(KeyCode.C)) ActivateSkill(EnumTypes.PlayerSkill.Bomb);
+    }
+
+    private void InitializeSkills()
+    {
+        _skills = new Dictionary<EnumTypes.PlayerSkill, BaseSkill>();
+
+        for (int i = 0; i < _skillPrefabs.Length; i++)
+        {
+            AddSkill((EnumTypes.PlayerSkill)i, _skillPrefabs[i]);
+        }
+    }
+
+    private void AddSkill(EnumTypes.PlayerSkill skillType, GameObject prefab)
+    {
+        GameObject skillObject = Instantiate(prefab, transform.position, Quaternion.identity);
+        skillObject.transform.parent = this.transform;
+
+        if (skillObject != null)
+        {
+            BaseSkill skillComponent = skillObject.GetComponent<BaseSkill>();
+            if (skillComponent != null)
+            {
+                skillComponent.Init(_characterManager);
+                _skills.Add(skillType, skillComponent);
+            }
+            else
+            {
+                Debug.LogError("Skill component not found on the prefab: " + skillType.ToString());
+                Destroy(skillObject);
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to instantiate skill prefab: " + skillType.ToString());
+        }
+    }
+
+    private void ActivateSkill(EnumTypes.PlayerSkill skillType)
+    {
+        if (_skills.ContainsKey(skillType))
+        {
+            if (_skills[skillType].IsAvailable())
+                _skills[skillType].Activate();
+        }
+        else
+        {
+            Debug.LogWarning("Skill not found: " + skillType.ToString());
+        }
     }
 }

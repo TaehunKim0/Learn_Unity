@@ -5,15 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private CharacterManager characterManager;
+    private CharacterManager _characterManager;
     
     [SerializeField]
-    private MapManager mapManager;
+    private MapManager _mapManager;
 
     void Start()
     {
-        characterManager.Init(this);
-        mapManager.Init(this);
+        _characterManager.Init(this);
+        _mapManager.Init(this);
     }
 
 }
