@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CooldownTime: 0.2
   ProjectileMoveSpeed: 20
-  _projectile: {fileID: 4153792508082524377, guid: 61e52cdcdef066043b7abe49a98f7f75, type: 3}
+  _projectile: {fileID: 516358827780490057, guid: e620dc05c0070e243a8f44f17a603fdd, type: 3}

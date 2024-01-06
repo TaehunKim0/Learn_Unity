@@ -23,6 +23,7 @@ public class PlayerHPSystem : MonoBehaviour
     {
         if (Health <= 0)
         {
+            // TODO : Event Ã³¸®?
             Destroy(gameObject);
             SceneManager.LoadScene("MainMenu");
         }

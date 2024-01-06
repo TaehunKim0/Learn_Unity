@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public float MoveSpeed = 2f;
 
+    private Vector3 _direction;
+
     public GameObject ExplodeFX;
 
     [SerializeField]
@@ -18,7 +20,12 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(new Vector3(0, MoveSpeed * Time.deltaTime, 0));
+        transform.Translate(_direction * MoveSpeed * Time.deltaTime);
+    }
+
+    public void SetDirection(Vector3 direction)
+    {
+        _direction = direction;
     }
 
     private void OnDestroy()

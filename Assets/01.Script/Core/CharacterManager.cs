@@ -20,6 +20,5 @@ public class CharacterManager : BaseManager
 
     private void OnDestroy()
     {
-        Debug.Log("Destoryed");
     }
 }

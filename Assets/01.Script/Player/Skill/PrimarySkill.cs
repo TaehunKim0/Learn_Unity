@@ -34,6 +34,7 @@ public class PrimarySkill : BaseSkill
 
         GameObject instance = Instantiate(_projectile, _characterManager.Player.GetComponent<Transform>().position, Quaternion.identity);
         instance.GetComponent<Projectile>().MoveSpeed = ProjectileMoveSpeed;
+        instance.GetComponent<Projectile>().SetDirection(Vector3.up);
 
         //SoundManager.instance.PlaySFX("PlayerAttack");
     }
