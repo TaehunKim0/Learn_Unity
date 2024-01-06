@@ -57,7 +57,7 @@ public class PlayerCharacter : BaseCharacter
             BaseSkill skillComponent = skillObject.GetComponent<BaseSkill>();
             if (skillComponent != null)
             {
-                skillComponent.Init(_characterManager);
+                skillComponent.Init(CharacterManager);
                 _skills.Add(skillType, skillComponent);
             }
             else
