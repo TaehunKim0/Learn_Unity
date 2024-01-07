@@ -21,8 +21,4 @@ public class CharacterManager : BaseManager
     void Update()
     {
     }
-
-    private void OnDestroy()
-    {
-    }
 }

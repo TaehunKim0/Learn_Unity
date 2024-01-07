@@ -10,7 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1732633484364239519, guid: a88873ebc2627c543a2bb05a81864ab7, type: 3}
       propertyPath: m_Name
-      value: Enemy1
+      value: EnemyA
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176996923768647563, guid: a88873ebc2627c543a2bb05a81864ab7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176996923768647563, guid: a88873ebc2627c543a2bb05a81864ab7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1175743747
       objectReference: {fileID: 0}
     - target: {fileID: 7518945595133811606, guid: a88873ebc2627c543a2bb05a81864ab7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77,5 +85,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5ba6d283bf549438863ba40f68e8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
-  Amplitude: 1
+  MoveSpeed: 2
+  Amplitude: 2

@@ -9,9 +9,10 @@ public class MapManager : BaseManager
 
     private float _bottomPos;
     private float _imageHeight;
-
-    void Start()
+    public override void Init(GameManager gameManager)
     {
+        base.Init(gameManager);
+
         _imageHeight = Backgrounds[0].GetChild(0).GetComponent<SpriteRenderer>().size.y;
         _bottomPos = Backgrounds[0].position.y - _imageHeight;
     }
@@ -43,8 +44,5 @@ public class MapManager : BaseManager
         }
     }
 
-    public override void Init(GameManager gameManager)
-    {
-        base.Init(gameManager);
-    }
+   
 }

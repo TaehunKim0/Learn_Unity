@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyB
       objectReference: {fileID: 0}
+    - target: {fileID: 3258078121779492666, guid: a88873ebc2627c543a2bb05a81864ab7, type: 3}
+      propertyPath: Health
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5176996923768647563, guid: a88873ebc2627c543a2bb05a81864ab7, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -89,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb38949c834ca2e4096d82734780a079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 1
+  MoveSpeed: 2
   AttackStopTime: 1
   MoveTime: 2
   Projectile: {fileID: 1915267679979641570, guid: 7c6fb1f2dfb9b8a449921e8aab2e7933, type: 3}

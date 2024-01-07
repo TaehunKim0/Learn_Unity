@@ -5,4 +5,11 @@ namespace EnumTypes
         Primary, Repair, Bomb
     }
 
+    public enum ItemName
+    {
+        WeaponUpgrade,
+        Invincibility,
+        Repair,
+        Fuel,
+    }
 }

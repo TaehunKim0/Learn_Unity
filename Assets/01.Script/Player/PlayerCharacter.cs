@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerCharacter : BaseCharacter
 {
@@ -11,6 +12,10 @@ public class PlayerCharacter : BaseCharacter
     #region Skills
     private Dictionary<EnumTypes.PlayerSkill, BaseSkill> _skills;
     [SerializeField] private GameObject[] _skillPrefabs;
+    #endregion
+
+    #region Item
+    public UnityEvent<EnumTypes.ItemName> GetItemEvent;
     #endregion
 
     public override void Init(CharacterManager characterManager)
@@ -82,6 +87,19 @@ public class PlayerCharacter : BaseCharacter
         else
         {
             Debug.LogWarning("Skill not found: " + skillType.ToString());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Item"))
+        {
+            IItem item = collision.gameObject.GetComponent<IItem>();
+            if (item != null)
+            {
+                item.OnGetItem(CharacterManager);
+                Destroy(collision.gameObject);
+            }
         }
     }
 }
