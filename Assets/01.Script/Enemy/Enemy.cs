@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,11 +29,9 @@ public class Enemy : BaseCharacter
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             Health -= 1f;
+            GameManager.Instance.SoundManager.PlaySFX("EnemyHit");
 
             StartCoroutine(HitFlick());
-
-            //SoundManager.instance.PlaySFX("Hit");
-
             Destroy(collision.gameObject);
         }
     }
