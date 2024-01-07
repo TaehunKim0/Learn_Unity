@@ -7,9 +7,9 @@ namespace EnumTypes
 
     public enum ItemName
     {
-        WeaponUpgrade,
+        UpgradeWeapon,
         Invincibility,
         Repair,
-        Fuel,
+        Refuel,
     }
 }

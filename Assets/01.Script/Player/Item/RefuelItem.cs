@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepairItem : MonoBehaviour ,IItem
+public class RefuelItem : MonoBehaviour, IItem
 {
     public void OnGetItem(CharacterManager characterManager)
     {
-        PlayerHPSystem system = characterManager.Player.GetComponent<PlayerHPSystem>();    
+        PlayerFuelSystem system = characterManager.Player.GetComponent<PlayerFuelSystem>();
         if (system != null)
         {
-            system.Health += 1;
+            system.Fuel = system.MaxFuel;
         }
     }
 }

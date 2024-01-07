@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private CharacterManager _characterManager;
+    public CharacterManager CharacterManager => _characterManager;
     
     [SerializeField]
     private MapManager _mapManager;
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this.gameObject);
     }
+
+    public PlayerCharacter GetPlayerCharacter() { return CharacterManager.Player.GetComponent<PlayerCharacter>(); }
 
     void Start()
     {

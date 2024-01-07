@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : BaseCharacter
 {
@@ -14,8 +16,18 @@ public class PlayerCharacter : BaseCharacter
     [SerializeField] private GameObject[] _skillPrefabs;
     #endregion
 
-    #region Item
-    public UnityEvent<EnumTypes.ItemName> GetItemEvent;
+    #region Invincibility
+    public int WeaponLevel = 1;
+    public int MaxWeaponLevel = 4;
+
+    private bool invincibility;
+    private Timer invincibilityTimer;
+    private const double InvincibilityDurationInSeconds = 10; // 무적 지속 시간 (초)
+    public bool Invincibility
+    {
+        get { return invincibility; }
+        set { invincibility = value; }
+    }
     #endregion
 
     public override void Init(CharacterManager characterManager)
@@ -23,6 +35,13 @@ public class PlayerCharacter : BaseCharacter
         base.Init(characterManager);
         InitializeSkills();
     }
+
+    public void DeadProcess()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private void Update()
     {
         UpdateMovement();
@@ -33,6 +52,14 @@ public class PlayerCharacter : BaseCharacter
     {
         _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         transform.Translate(new Vector3(_moveInput.x, _moveInput.y, 0f) * (MoveSpeed * Time.deltaTime));
+
+        // 카메라의 좌측 하단은(0, 0, 0.0)이며, 우측 상단은(1.0 , 1.0)이다.
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        if (pos.x < 0f) pos.x = 0f;
+        if (pos.x > 1f) pos.x = 1f;
+        if (pos.y < 0f) pos.y = 0f;
+        if (pos.y > 1f) pos.y = 1f;
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
     private void UpdateSkillInput()
@@ -88,6 +115,48 @@ public class PlayerCharacter : BaseCharacter
         {
             Debug.LogWarning("Skill not found: " + skillType.ToString());
         }
+    }
+
+    public void SetInvincibility(bool invin)
+    {
+        if (invin)
+        {
+            Invincibility = true;
+
+            // 이미 타이머가 실행 중이면 중지
+            if (invincibilityTimer != null)
+            {
+                invincibilityTimer.Stop();
+                invincibilityTimer.Dispose();
+            }
+
+            // 타이머 생성 및 설정
+            invincibilityTimer = new Timer(InvincibilityDurationInSeconds * 1000); // 초를 밀리초로 변환
+            invincibilityTimer.Elapsed += OnInvincibilityTimerElapsed;
+            invincibilityTimer.AutoReset = false; // 타이머 한 번만 실행
+
+            // 타이머 시작
+            invincibilityTimer.Start();
+        }
+        else
+        {
+            Invincibility = false;
+            // 무적이 해제될 때 여기에 추가적인 작업을 수행할 수 있습니다.
+
+            // 이미 타이머가 실행 중이면 중지
+            if (invincibilityTimer != null)
+            {
+                invincibilityTimer.Stop();
+                invincibilityTimer.Dispose();
+            }
+        }
+
+    }
+
+    private void OnInvincibilityTimerElapsed(object sender, ElapsedEventArgs e)
+    {
+        // 타이머가 만료되면 무적을 비활성화
+        Invincibility = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

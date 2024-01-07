@@ -23,15 +23,6 @@ public class PrimarySkill : BaseSkill
     {
         base.Activate();
 
-        if(_projectile == null)
-        {
-            Debug.Log("Projectile null");
-        }
-        if (_characterManager == null)
-        {
-            Debug.Log("_characterManager null");
-        }
-
         GameObject instance = Instantiate(_projectile, _characterManager.Player.GetComponent<Transform>().position, Quaternion.identity);
         instance.GetComponent<Projectile>().MoveSpeed = ProjectileMoveSpeed;
         instance.GetComponent<Projectile>().SetDirection(Vector3.up);

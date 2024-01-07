@@ -13,22 +13,6 @@ public class PlayerHPSystem : MonoBehaviour
     {
         MaxHealth = Health;
     }
-
-    void Update()
-    {
-        CheckPlayerDead();
-    }
-
-    void CheckPlayerDead()
-    {
-        if (Health <= 0)
-        {
-            // TODO : Event 처리?
-            Destroy(gameObject);
-            SceneManager.LoadScene("MainMenu");
-        }
-    }
-
     IEnumerator HitFlick()
     {
         int flickCount = 0; // 깜박인 횟수를 기록하는 변수
@@ -49,14 +33,19 @@ public class PlayerHPSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && !GameManager.Instance.GetPlayerCharacter().Invincibility)
         {
             Health -= 1;
             StartCoroutine(HitFlick());
 
-            //SoundManager.instance.PlaySFX("Hit");
+            GameManager.Instance.SoundManager.PlaySFX("Hit");
 
             Destroy(collision.gameObject);
+
+            if (Health <= 0)
+            {
+                GameManager.Instance.GetPlayerCharacter().DeadProcess();
+            }
         }
 
         if (collision.gameObject.CompareTag("Item"))
