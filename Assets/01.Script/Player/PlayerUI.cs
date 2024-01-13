@@ -1,54 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public Image[] HealthImg = new Image[3];
+    public Image[] HealthImages = new Image[3];
     public Image RepairSkill;
     public Image BombSkill;
     public Slider FuelSlider;
 
-    void Start()
+    private Dictionary<EnumTypes.PlayerSkill, TextMeshProUGUI> _coolDownTexts = new Dictionary<EnumTypes.PlayerSkill, TextMeshProUGUI>();
+
+    private void Start()
     {
-        
+        _coolDownTexts[EnumTypes.PlayerSkill.Repair] = RepairSkill.GetComponentInChildren<TextMeshProUGUI>();
+        _coolDownTexts[EnumTypes.PlayerSkill.Bomb] = BombSkill.GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    void Update()
+    private void Update()
     {
         UpdateHealth();
         UpdateSkills();
         UpdateFuel();
     }
 
-    void UpdateHealth()
+    private void UpdateHealth()
     {
         int health = GameManager.Instance.GetPlayerCharacter().GetComponent<PlayerHPSystem>().Health;
 
-        for (int i = 0; i < HealthImg.Length; i++)
+        for (int i = 0; i < HealthImages.Length; i++)
         {
-            if (i < health)
-            {
-                HealthImg[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                HealthImg[i].gameObject.SetActive(false);
-            }
+            HealthImages[i].gameObject.SetActive(i < health);
         }
     }
 
-    void UpdateSkills()
+    private void UpdateSkills()
     {
-
+        UpdateSkill(EnumTypes.PlayerSkill.Repair);
+        UpdateSkill(EnumTypes.PlayerSkill.Bomb);
     }
 
-    void UpdateFuel()
+    private void UpdateSkill(EnumTypes.PlayerSkill skill)
     {
-        if (FuelSlider != null)
-        {
-            FuelSlider.value = GameManager.Instance.GetPlayerCharacter().GetComponent<PlayerFuelSystem>().Fuel / 100;
-        }
+        bool isCoolDown = GameManager.Instance.GetPlayerCharacter().Skills[skill].bIsCoolDown;
+        float currentTime = GameManager.Instance.GetPlayerCharacter().Skills[skill].CurrentTime;
+
+        _coolDownTexts[skill].gameObject.SetActive(isCoolDown);
+        _coolDownTexts[skill].text = $"{Mathf.RoundToInt(currentTime)}";
+    }
+
+    private void UpdateFuel()
+    {
+        FuelSlider.GetComponent<Slider>().value = GameManager.Instance.GetPlayerCharacter().GetComponent<PlayerFuelSystem>().Fuel / 100;
     }
 }

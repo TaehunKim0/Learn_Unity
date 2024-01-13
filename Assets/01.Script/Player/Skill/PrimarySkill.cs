@@ -24,11 +24,6 @@ public class PrimarySkill : BaseSkill
         weapons[4] = new Level5Weapon();
     }
 
-    void Update()
-    {
-
-    }
-
     public override void Activate()
     {
         base.Activate();

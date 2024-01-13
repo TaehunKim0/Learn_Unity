@@ -13,7 +13,7 @@ public class PlayerCharacter : BaseCharacter
     #endregion
 
     #region Skills
-    private Dictionary<EnumTypes.PlayerSkill, BaseSkill> _skills;
+    [HideInInspector] public Dictionary<EnumTypes.PlayerSkill, BaseSkill> Skills;
     [SerializeField] private GameObject[] _skillPrefabs;
     #endregion
 
@@ -74,7 +74,7 @@ public class PlayerCharacter : BaseCharacter
 
     private void InitializeSkills()
     {
-        _skills = new Dictionary<EnumTypes.PlayerSkill, BaseSkill>();
+        Skills = new Dictionary<EnumTypes.PlayerSkill, BaseSkill>();
 
         for (int i = 0; i < _skillPrefabs.Length; i++)
         {
@@ -93,15 +93,15 @@ public class PlayerCharacter : BaseCharacter
         {
             BaseSkill skillComponent = skillObject.GetComponent<BaseSkill>();
             skillComponent.Init(CharacterManager);
-            _skills.Add(skillType, skillComponent);
+            Skills.Add(skillType, skillComponent);
         }
     }
     private void ActivateSkill(EnumTypes.PlayerSkill skillType)
     {
-        if (_skills.ContainsKey(skillType))
+        if (Skills.ContainsKey(skillType))
         {
-            if (_skills[skillType].IsAvailable())
-                _skills[skillType].Activate();
+            if (Skills[skillType].IsAvailable())
+                Skills[skillType].Activate();
         }
     }
 

@@ -7,23 +7,35 @@ public class BaseSkill : MonoBehaviour
 {
     protected CharacterManager _characterManager;
     public float CooldownTime;
-    private float _lastUsedTime; // 마지막으로 스킬을 사용한 시간
+    public float CurrentTime;
+    public bool bIsCoolDown = false;
 
     public void Init(CharacterManager characterManager)
     {
         _characterManager = characterManager;
-        this._lastUsedTime = -99f; // 초기화 시간을 설정하여 처음에는 스킬을 사용할 수 있도록 함
+    }
+
+    public void Update()
+    {
+        if(bIsCoolDown)
+        {
+            CurrentTime -= Time.deltaTime;
+            if(CurrentTime <= 0)
+            {
+                bIsCoolDown = false;
+            }
+        }
     }
 
     public bool IsAvailable()
     {
         // 스킬이 쿨다운 중인지 확인
-        return Time.time - _lastUsedTime >= CooldownTime;
+        return !bIsCoolDown;
     }
 
     public virtual void Activate()
     {
-        // 스킬 사용 시간 업데이트
-        _lastUsedTime = Time.time;
+        bIsCoolDown = true;
+        CurrentTime = CooldownTime;
     }
 }
