@@ -31,7 +31,6 @@ public class Projectile : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("적 총알 제거");
         //Instantiate(ExplodeFX, transform.position, Quaternion.identity);
     }
 }

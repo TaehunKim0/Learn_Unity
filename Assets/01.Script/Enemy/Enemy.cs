@@ -8,6 +8,7 @@ public class Enemy : BaseCharacter
 {
     public float Health = 3f;
     public float AttackDamage = 1f;
+    bool bIsDead = false;
 
     void Start()
     {
@@ -17,11 +18,6 @@ public class Enemy : BaseCharacter
 
     void Update()
     {
-        if (Health <= 0)
-        {
-            GameManager.Instance.EnemyDies();
-            Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,17 +27,25 @@ public class Enemy : BaseCharacter
             Health -= 1f;
             GameManager.Instance.SoundManager.PlaySFX("EnemyHit");
 
+            if (Health <= 0 && !bIsDead)
+            {
+                GameManager.Instance.EnemyDies();
+
+                if (Random.Range(0, 1) == 0)
+                {
+                    int randomInt = Random.Range(0, 4);
+                    EnumTypes.ItemName itemName = (EnumTypes.ItemName)randomInt;
+                    GameManager.Instance.ItemManager.SpawnItem(itemName, transform.position);
+                }
+
+                bIsDead = true;
+                Destroy(gameObject);
+            }
+
             StartCoroutine(HitFlick());
             Destroy(collision.gameObject);
         }
     }
-
-    private void OnDestroy()
-    {
-        //if (Random.Range(1, 10) == 5)
-            //ItemManager.instance.SpawnItem(ItemName.HealthUp, transform.position);
-    }
-
     IEnumerator HitFlick()
     {
         int flickCount = 0; // 깜박인 횟수를 기록하는 변수

@@ -9,11 +9,8 @@ public class EnemySpawnManager : BaseManager
     public float CoolDownTime;
     public int MaxSpawnEnemyCount;
 
-    private float _time = 0;
-    private bool _isCoolDown = false;
-
     private int _spawnCount = 0;
-    private int _bossSpawnCount = 3;
+    private int _bossSpawnCount = 10;
 
     private bool _bSpawnBoss = false;
 
@@ -48,13 +45,10 @@ public class EnemySpawnManager : BaseManager
                 Instantiate(Enemys[randomEnemy], EnemySpawnTransform[randomPosition].position, Quaternion.identity);
             }
 
-            _isCoolDown = true;
             _spawnCount += spawnCount;
 
             if (_spawnCount >= _bossSpawnCount)
             {
-                GameManager.Instance.StageClear();
-
                 _bSpawnBoss = true;
                 //보스 스폰
             }

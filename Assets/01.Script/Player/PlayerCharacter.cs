@@ -19,7 +19,7 @@ public class PlayerCharacter : BaseCharacter
     #region Invincibility
     private bool invincibility;
     private Timer invincibilityTimer;
-    private const double InvincibilityDurationInSeconds = 10; // 무적 지속 시간 (초)
+    private const double InvincibilityDurationInSeconds = 3; // 무적 지속 시간 (초)
     public bool Invincibility
     {
         get { return invincibility; }
@@ -141,11 +141,13 @@ public class PlayerCharacter : BaseCharacter
 
             // 타이머 시작
             invincibilityTimer.Start();
+            GetComponent<SpriteRenderer>().color = Color.yellow;
         }
         else
         {
             Invincibility = false;
             // 무적이 해제될 때 여기에 추가적인 작업을 수행할 수 있습니다.
+            GetComponent<SpriteRenderer>().color = Color.white;
 
             // 이미 타이머가 실행 중이면 중지
             if (invincibilityTimer != null)
@@ -167,12 +169,10 @@ public class PlayerCharacter : BaseCharacter
     {
         if(collision.gameObject.CompareTag("Item"))
         {
-            IItem item = collision.gameObject.GetComponent<IItem>();
+            BaseItem item = collision.gameObject.GetComponent<BaseItem>();
             if (item != null)
             {
                 item.OnGetItem(CharacterManager);
-
-                Debug.Log("3");
                 Destroy(collision.gameObject);
             }
         }

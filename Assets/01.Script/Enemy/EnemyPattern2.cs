@@ -41,8 +41,6 @@ public class EnemyPattern2 : MonoBehaviour
             Vector3 direction = playerPos - transform.position;
             direction.Normalize();
 
-            Debug.Log("Àû ÃÑ¾Ë ¹ß»ç");
-
             var projectile = Instantiate(Projectile, transform.position, Quaternion.identity);
             projectile.GetComponent<Projectile>().SetDirection(direction);
             projectile.GetComponent<Projectile>().MoveSpeed = ProjectileMoveSpeed;

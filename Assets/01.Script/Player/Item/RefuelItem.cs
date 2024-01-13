@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RefuelItem : MonoBehaviour, IItem
+public class RefuelItem : BaseItem
 {
-    public void OnGetItem(CharacterManager characterManager)
+    public override void OnGetItem(CharacterManager characterManager)
     {
         PlayerFuelSystem system = characterManager.Player.GetComponent<PlayerFuelSystem>();
         if (system != null)

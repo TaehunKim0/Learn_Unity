@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InvincibilityItem : MonoBehaviour, IItem
+public class InvincibilityItem : BaseItem
 {
-    public void OnGetItem(CharacterManager characterManager)
+    public override void OnGetItem(CharacterManager characterManager)
     {
-        characterManager.Player.GetComponent<PlayerCharacter>().Invincibility = true;
+        characterManager.Player.GetComponent<PlayerCharacter>().SetInvincibility(true);
     }
 }

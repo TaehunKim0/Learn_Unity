@@ -10,9 +10,14 @@ public class Item
     public GameObject Prefab;
 }
 
-public interface IItem
+public class BaseItem : MonoBehaviour
 {
-    void OnGetItem(CharacterManager characterManager);
+    protected void Update()
+    {
+        transform.Translate(new Vector3(0, -0.005f, 0f));   
+    }
+
+    public virtual void OnGetItem(CharacterManager characterManager) { }
 }
 
 public class ItemManager : MonoBehaviour

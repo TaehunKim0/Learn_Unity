@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public MapManager MapManager;
     public EnemySpawnManager EnemySpawnManager;
     public SoundManager SoundManager;
+    public ItemManager ItemManager;
 
     public Canvas StageClearResultCanvas;
     public TMP_Text CurrentScoreText;
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour
         MapManager.Init(this);
         EnemySpawnManager.Init(this);
         SoundManager.PlayBGM("BGM");
-
     }
 
     public void EnemyDies()
