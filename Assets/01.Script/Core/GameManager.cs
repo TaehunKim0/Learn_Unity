@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     static public GameManager Instance;
 
-    [SerializeField]
-    private CharacterManager _characterManager;
-    public CharacterManager CharacterManager => _characterManager;
-    
-    [SerializeField]
-    private MapManager _mapManager;
-
-    [SerializeField]
-    private EnemySpawnManager _enemySpawnManager;
-
+    public CharacterManager CharacterManager;
+    public MapManager MapManager;
+    public EnemySpawnManager EnemySpawnManager;
     public SoundManager SoundManager;
+
+    public Canvas StageClearResultCanvas;
+    public TMP_Text CurrentScoreText;
+    public TMP_Text ElapsedTimeText;
 
     private void Awake()  // 객체 생성시 최초 실행 (그래서 싱글톤을 여기서 생성)
     {
@@ -32,10 +33,57 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _characterManager.Init(this);
-        _mapManager.Init(this);
-        _enemySpawnManager.Init(this);
-
+        if(CharacterManager == null) { return; }
+        CharacterManager.Init(this);
+        MapManager.Init(this);
+        EnemySpawnManager.Init(this);
         SoundManager.PlayBGM("BGM");
+
+    }
+
+    public void EnemyDies()
+    {
+        GameInstance.instance.Score += 10;
+    }
+
+    public void StageClear()
+    {
+        GameInstance.instance.Score += 500;
+
+        float gameStartTime = GameInstance.instance.GameStartTime;
+        int score = GameInstance.instance.Score;
+
+        // 걸린 시간
+        int elapsedTime = Mathf.FloorToInt(Time.time - gameStartTime);
+
+        // 스테이지 클리어 결과창 : 점수, 시간
+        StageClearResultCanvas.gameObject.SetActive(true);
+        CurrentScoreText.text = "CurrentScore : " + score;
+        ElapsedTimeText.text = "ElapsedTime : " + elapsedTime;
+
+        // 5초 뒤에 다음 스테이지
+        StartCoroutine(NextStageAfterDelay(5f));
+    }
+
+    IEnumerator NextStageAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        switch(GameInstance.instance.CurrentStageLevel)
+        {
+            case 1:
+                SceneManager.LoadScene("Stage2");
+                GameInstance.instance.CurrentStageLevel = 2;
+                break;
+
+            case 2:
+                SceneManager.LoadScene("Result");
+                break;
+        }
+    }
+
+    public void GameStart()
+    {
+        SceneManager.LoadScene("Stage1");
     }
 }

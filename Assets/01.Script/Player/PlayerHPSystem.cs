@@ -40,6 +40,8 @@ public class PlayerHPSystem : MonoBehaviour
 
             GameManager.Instance.SoundManager.PlaySFX("Hit");
 
+            Debug.Log("플레이어 맞음");
+
             Destroy(collision.gameObject);
 
             if (Health <= 0)
@@ -62,6 +64,7 @@ public class PlayerHPSystem : MonoBehaviour
 
             //SoundManager.instance.PlaySFX("TakeItem");
 
+            Debug.Log("4");
             Destroy(collision.gameObject);
         }
     }

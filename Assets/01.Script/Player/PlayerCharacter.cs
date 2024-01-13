@@ -79,6 +79,8 @@ public class PlayerCharacter : BaseCharacter
         {
             AddSkill((EnumTypes.PlayerSkill)i, _skillPrefabs[i]);
         }
+
+        CurrentWeaponLevel = GameInstance.instance.CurrentPlayerWeaponLevel;
     }
 
     private void AddSkill(EnumTypes.PlayerSkill skillType, GameObject prefab)
@@ -169,6 +171,8 @@ public class PlayerCharacter : BaseCharacter
             if (item != null)
             {
                 item.OnGetItem(CharacterManager);
+
+                Debug.Log("3");
                 Destroy(collision.gameObject);
             }
         }

@@ -19,7 +19,7 @@ public class Enemy : BaseCharacter
     {
         if (Health <= 0)
         {
-            // GameMananger의 Score 올리기
+            GameManager.Instance.EnemyDies();
             Destroy(gameObject);
         }
     }

@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField]
     private float _lifeTime = 3f;
+
     void Start()
     {
         Destroy(gameObject, _lifeTime);
@@ -30,6 +31,7 @@ public class Projectile : MonoBehaviour
 
     private void OnDestroy()
     {
+        Debug.Log("Àû ÃÑ¾Ë Á¦°Å");
         //Instantiate(ExplodeFX, transform.position, Quaternion.identity);
     }
 }

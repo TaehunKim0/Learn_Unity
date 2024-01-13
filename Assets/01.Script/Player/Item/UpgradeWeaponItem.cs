@@ -21,6 +21,7 @@ public class UpgradeWeaponItem : MonoBehaviour, IItem
             }
 
             playerCharacter.CurrentWeaponLevel = Mathf.Clamp(currentLevel + 1, 0, maxLevel);
+            GameInstance.instance.CurrentPlayerWeaponLevel = currentLevel;
         }
     }
 }

@@ -31,11 +31,17 @@ public class EnemyPattern2 : MonoBehaviour
 
             GameObject manager = GameObject.Find("Managers");
             BaseCharacter character = manager.GetComponent<CharacterManager>().Player;
-            if (character is null) break;
+            if (character is null)
+            {
+                Debug.Log("Player is null");
+                break;
+            }
 
             Vector3 playerPos = character.GetComponent<Transform>().position;
             Vector3 direction = playerPos - transform.position;
             direction.Normalize();
+
+            Debug.Log("Àû ÃÑ¾Ë ¹ß»ç");
 
             var projectile = Instantiate(Projectile, transform.position, Quaternion.identity);
             projectile.GetComponent<Projectile>().SetDirection(direction);
