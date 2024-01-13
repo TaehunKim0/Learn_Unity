@@ -15,8 +15,7 @@ public class UpgradeWeaponItem : MonoBehaviour, IItem
 
             if(currentLevel >= maxLevel)
             {
-                // 점수만 올림
-
+                GameManager.Instance.AddScore(30);
                 return;
             }
 

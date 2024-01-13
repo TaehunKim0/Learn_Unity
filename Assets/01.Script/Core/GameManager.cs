@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void EnemyDies()
     {
-        GameInstance.instance.Score += 10;
+        AddScore(10);
     }
 
     public void StageClear()
@@ -85,5 +85,10 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         SceneManager.LoadScene("Stage1");
+    }
+
+    public void AddScore(int score)
+    {
+        GameInstance.instance.Score += score;
     }
 }

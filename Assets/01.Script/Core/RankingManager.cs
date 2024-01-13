@@ -3,18 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RankingManager : MonoBehaviour
 {
+    public Canvas RankingCanvas;
+    public Canvas SetRankCanvas;
+
     private List<RankingEntry> rankingEntries = new List<RankingEntry>();
     public TextMeshProUGUI[] Rankings = new TextMeshProUGUI[5];
     public TextMeshProUGUI CurrentPlayerScore;
+    public TextMeshProUGUI InitialInputFieldText;
 
-    private void Start()
+    private string CurrentPlayerInitial;
+
+    public void SetInitial()
     {
+        SetRankCanvas.gameObject.SetActive(false);
+        RankingCanvas.gameObject.SetActive(true);
+
+        CurrentPlayerInitial = InitialInputFieldText.text;
+
         SetCurrentScore();
         SortRanking();
         UpdateRankingUI();
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     void SetCurrentScore()
@@ -33,7 +50,7 @@ public class RankingManager : MonoBehaviour
 
         // 현재 플레이어의 점수와 이름을 가져와 랭킹에 등록
         int currentPlayerScore = GameInstance.instance.Score;
-        string currentPlayerName = "AAA"; // 여기에 현재 플레이어의 이름을 가져오는 코드를 추가해야 합니다.
+        string currentPlayerName = CurrentPlayerInitial;
 
         // 현재 플레이어의 점수가 랭킹에 등록 가능한지 확인
         if (IsScoreEligibleForRanking(currentPlayerScore))
@@ -62,7 +79,7 @@ public class RankingManager : MonoBehaviour
 
     void UpdateRankingUI()
     {
-        CurrentPlayerScore.text = $"BBB {GameInstance.instance.Score}";
+        CurrentPlayerScore.text = $"{CurrentPlayerInitial} {GameInstance.instance.Score}";
 
         for (int i = 0; i < Rankings.Length; i++)
         {
