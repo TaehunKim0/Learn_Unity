@@ -9,6 +9,7 @@ public class MapManager : BaseManager
 
     private float _bottomPos;
     private float _imageHeight;
+
     public override void Init(GameManager gameManager)
     {
         base.Init(gameManager);

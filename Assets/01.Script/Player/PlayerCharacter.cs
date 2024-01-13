@@ -17,9 +17,6 @@ public class PlayerCharacter : BaseCharacter
     #endregion
 
     #region Invincibility
-    public int WeaponLevel = 1;
-    public int MaxWeaponLevel = 4;
-
     private bool invincibility;
     private Timer invincibilityTimer;
     private const double InvincibilityDurationInSeconds = 10; // 무적 지속 시간 (초)
@@ -28,6 +25,11 @@ public class PlayerCharacter : BaseCharacter
         get { return invincibility; }
         set { invincibility = value; }
     }
+    #endregion
+
+    #region Weapon
+    public int CurrentWeaponLevel = 0;
+    public int MaxWeaponLevel = 3;
     #endregion
 
     public override void Init(CharacterManager characterManager)

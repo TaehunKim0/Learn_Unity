@@ -10,10 +10,17 @@ public class UpgradeWeaponItem : MonoBehaviour, IItem
         {
             PlayerCharacter playerCharacter = characterManager.Player.GetComponent<PlayerCharacter>();
 
-            int currentLevel = playerCharacter.WeaponLevel;
+            int currentLevel = playerCharacter.CurrentWeaponLevel;
             int maxLevel = playerCharacter.MaxWeaponLevel;
 
-            playerCharacter.WeaponLevel = Mathf.Clamp(currentLevel + 1, 0, maxLevel);
+            if(currentLevel >= maxLevel)
+            {
+                // 점수만 올림
+
+                return;
+            }
+
+            playerCharacter.CurrentWeaponLevel = Mathf.Clamp(currentLevel + 1, 0, maxLevel);
         }
     }
 }
