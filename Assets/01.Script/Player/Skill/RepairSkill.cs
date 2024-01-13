@@ -16,6 +16,15 @@ public class RepairSkill : BaseSkill
     {
         base.Activate();
 
-        
+        PlayerHPSystem system = _characterManager.Player.GetComponent<PlayerHPSystem>();
+        if (system != null)
+        {
+            system.Health += 1;
+
+            if(system.Health >= system.MaxHealth)
+            {
+                system.Health = system.MaxHealth;
+            }
+        }
     }
 }

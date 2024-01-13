@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class PlayerCharacter : BaseCharacter
 
     #region Invincibility
     private bool invincibility;
-    private Timer invincibilityTimer;
+    private Coroutine invincibilityCoroutine;
     private const double InvincibilityDurationInSeconds = 3; // 무적 지속 시간 (초)
     public bool Invincibility
     {
@@ -91,23 +92,10 @@ public class PlayerCharacter : BaseCharacter
         if (skillObject != null)
         {
             BaseSkill skillComponent = skillObject.GetComponent<BaseSkill>();
-            if (skillComponent != null)
-            {
-                skillComponent.Init(CharacterManager);
-                _skills.Add(skillType, skillComponent);
-            }
-            else
-            {
-                Debug.LogError("Skill component not found on the prefab: " + skillType.ToString());
-                Destroy(skillObject);
-            }
-        }
-        else
-        {
-            Debug.LogError("Failed to instantiate skill prefab: " + skillType.ToString());
+            skillComponent.Init(CharacterManager);
+            _skills.Add(skillType, skillComponent);
         }
     }
-
     private void ActivateSkill(EnumTypes.PlayerSkill skillType)
     {
         if (_skills.ContainsKey(skillType))
@@ -115,54 +103,36 @@ public class PlayerCharacter : BaseCharacter
             if (_skills[skillType].IsAvailable())
                 _skills[skillType].Activate();
         }
-        else
-        {
-            Debug.LogWarning("Skill not found: " + skillType.ToString());
-        }
     }
 
     public void SetInvincibility(bool invin)
     {
         if (invin)
         {
-            Invincibility = true;
-
-            // 이미 타이머가 실행 중이면 중지
-            if (invincibilityTimer != null)
+            if (invincibilityCoroutine != null)
             {
-                invincibilityTimer.Stop();
-                invincibilityTimer.Dispose();
+                StopCoroutine(invincibilityCoroutine);
             }
 
-            // 타이머 생성 및 설정
-            invincibilityTimer = new Timer(InvincibilityDurationInSeconds * 1000); // 초를 밀리초로 변환
-            invincibilityTimer.Elapsed += OnInvincibilityTimerElapsed;
-            invincibilityTimer.AutoReset = false; // 타이머 한 번만 실행
-
-            // 타이머 시작
-            invincibilityTimer.Start();
-            GetComponent<SpriteRenderer>().color = Color.yellow;
+            invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
         }
-        else
-        {
-            Invincibility = false;
-            // 무적이 해제될 때 여기에 추가적인 작업을 수행할 수 있습니다.
-            GetComponent<SpriteRenderer>().color = Color.white;
-
-            // 이미 타이머가 실행 중이면 중지
-            if (invincibilityTimer != null)
-            {
-                invincibilityTimer.Stop();
-                invincibilityTimer.Dispose();
-            }
-        }
-
     }
 
-    private void OnInvincibilityTimerElapsed(object sender, ElapsedEventArgs e)
+    private IEnumerator InvincibilityCoroutine()
     {
+        Invincibility = true;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // 무적 지속 시간 (초)
+        float invincibilityDuration = 3f;
+        spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+
+        // 무적이 해제될 때까지 대기
+        yield return new WaitForSeconds(invincibilityDuration);
+
         // 타이머가 만료되면 무적을 비활성화
         Invincibility = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

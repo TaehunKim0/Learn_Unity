@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerHPSystem : MonoBehaviour
 {
     public int Health;
-    private int MaxHealth;
+    public int MaxHealth;
 
     void Start()
     {
@@ -19,11 +19,11 @@ public class PlayerHPSystem : MonoBehaviour
 
         while (flickCount < 5) // 5번 깜박일 때까지 반복
         {
-            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f); // 스프라이트를 투명도 0.5로 설정
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f); // 스프라이트를 투명도 0.5로 설정
 
             yield return new WaitForSeconds(0.1f); // 0.1초 대기
 
-            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, 1); // 스프라이트를 원래 투명도로 설정
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1); // 스프라이트를 원래 투명도로 설정
 
             yield return new WaitForSeconds(0.1f); // 0.1초 대기
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ public class Enemy : BaseCharacter
     public float Health = 3f;
     public float AttackDamage = 1f;
     bool bIsDead = false;
+
+    public GameObject ExplodeFX;
 
     void Start()
     {
@@ -20,6 +23,26 @@ public class Enemy : BaseCharacter
     {
     }
 
+    public void Dead()
+    {
+        if (!bIsDead)
+        {
+            GameManager.Instance.EnemyDies();
+
+            if (Random.Range(0, 1) == 0)
+            {
+                int randomInt = Random.Range(0, 4);
+                EnumTypes.ItemName itemName = (EnumTypes.ItemName)randomInt;
+                GameManager.Instance.ItemManager.SpawnItem(itemName, transform.position);
+            }
+
+            bIsDead = true;
+
+            Instantiate(ExplodeFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
@@ -27,19 +50,9 @@ public class Enemy : BaseCharacter
             Health -= 1f;
             GameManager.Instance.SoundManager.PlaySFX("EnemyHit");
 
-            if (Health <= 0 && !bIsDead)
+            if(Health <= 0f)
             {
-                GameManager.Instance.EnemyDies();
-
-                if (Random.Range(0, 1) == 0)
-                {
-                    int randomInt = Random.Range(0, 4);
-                    EnumTypes.ItemName itemName = (EnumTypes.ItemName)randomInt;
-                    GameManager.Instance.ItemManager.SpawnItem(itemName, transform.position);
-                }
-
-                bIsDead = true;
-                Destroy(gameObject);
+                Dead();
             }
 
             StartCoroutine(HitFlick());

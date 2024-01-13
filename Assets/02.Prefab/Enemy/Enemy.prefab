@@ -173,3 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 3
   AttackDamage: 1
+  ExplodeFX: {fileID: 5394548969318968451, guid: 3d81851ae3d8cc846a59c5bb5dadae31, type: 3}
