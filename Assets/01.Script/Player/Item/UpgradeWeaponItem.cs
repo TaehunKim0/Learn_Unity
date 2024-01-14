@@ -20,7 +20,7 @@ public class UpgradeWeaponItem : BaseItem
             }
 
             playerCharacter.CurrentWeaponLevel = Mathf.Clamp(currentLevel + 1, 0, maxLevel);
-            GameInstance.instance.CurrentPlayerWeaponLevel = currentLevel;
+            GameInstance.instance.CurrentPlayerWeaponLevel = playerCharacter.CurrentWeaponLevel;
         }
     }
 }

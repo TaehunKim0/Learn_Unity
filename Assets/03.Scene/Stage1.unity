@@ -506,8 +506,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameStartTime: 0
   Score: 0
-  CurrentPlayerWeaponLevel: 0
   CurrentStageLevel: 1
+  CurrentPlayerWeaponLevel: 0
+  CurrentPlayerHP: 3
+  CurrentPlayerFuel: 100
 --- !u!4 &285385417
 Transform:
   m_ObjectHideFlags: 0
@@ -1744,6 +1746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 3958490047935685486, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
+      propertyPath: FuelDecreaseSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4664164876714272417, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1796,18 +1802,6 @@ PrefabInstance:
       propertyPath: RepairSkill
       value: 
       objectReference: {fileID: 2130881612}
-    - target: {fileID: 4875045190671827755, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
-      propertyPath: HealthImg.Array.data[0]
-      value: 
-      objectReference: {fileID: 842631298}
-    - target: {fileID: 4875045190671827755, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
-      propertyPath: HealthImg.Array.data[1]
-      value: 
-      objectReference: {fileID: 1676797783}
-    - target: {fileID: 4875045190671827755, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
-      propertyPath: HealthImg.Array.data[2]
-      value: 
-      objectReference: {fileID: 887399685}
     - target: {fileID: 4875045190671827755, guid: 992d19949546c6d44b38e7d68c4e5630, type: 3}
       propertyPath: SkillCooldownNoticeText
       value: 
@@ -1928,14 +1922,6 @@ PrefabInstance:
     - target: {fileID: 4430320898782770614, guid: 9445a7260a1877c46b5d0d87ad6ec960, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6143259746763552836, guid: 9445a7260a1877c46b5d0d87ad6ec960, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177401330429361223, guid: 9445a7260a1877c46b5d0d87ad6ec960, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

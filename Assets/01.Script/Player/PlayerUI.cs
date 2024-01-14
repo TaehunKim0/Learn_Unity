@@ -56,7 +56,7 @@ public class PlayerUI : MonoBehaviour
 
     private void UpdateFuel()
     {
-        FuelSlider.GetComponent<Slider>().value = GameManager.Instance.GetPlayerCharacter().GetComponent<PlayerFuelSystem>().Fuel / 100;
+        FuelSlider.GetComponent<Slider>().value = GameManager.Instance.GetPlayerCharacter().GetComponent<PlayerFuelSystem>().Fuel / 100f;
     }
 
     public void NoticeSkillCooldown(EnumTypes.PlayerSkill playerSkill)

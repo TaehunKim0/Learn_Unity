@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fuel: 100
   MaxFuel: 100
-  FuelDecreaseSpeed: 0.5
+  FuelDecreaseSpeed: 2
 --- !u!114 &6032003255950415526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 3
-  MaxHealth: 0
+  MaxHealth: 3
 --- !u!114 &4875045190671827755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,13 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7cdcd78e3380a344bf8a3960a004042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthImg:
+  HealthImages:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   RepairSkill: {fileID: 0}
   BombSkill: {fileID: 0}
   FuelSlider: {fileID: 0}
+  SkillCooldownNoticeText: {fileID: 0}
 --- !u!212 &6035239250465997736
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -189,7 +190,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.011444069, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -200,7 +201,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4277966, y: 0.67956614}
   m_EdgeRadius: 0
 --- !u!50 &5368880409621270751
 Rigidbody2D:

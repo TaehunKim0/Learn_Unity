@@ -10,13 +10,12 @@ public class Enemy : BaseCharacter
     public float Health = 3f;
     public float AttackDamage = 1f;
     bool bIsDead = false;
+    public bool bMustSpawnItem = false;
 
     public GameObject ExplodeFX;
 
     void Start()
     {
-        Health = 3f;
-        AttackDamage = 1f;
     }
 
     void Update()
@@ -29,12 +28,10 @@ public class Enemy : BaseCharacter
         {
             GameManager.Instance.EnemyDies();
 
-            if (Random.Range(0, 1) == 0)
-            {
-                int randomInt = Random.Range(0, 4);
-                EnumTypes.ItemName itemName = (EnumTypes.ItemName)randomInt;
-                GameManager.Instance.ItemManager.SpawnItem(itemName, transform.position);
-            }
+            if(!bMustSpawnItem)
+                GameManager.Instance.ItemManager.SpawnRandomItem(0, 3, transform.position);    
+            else
+                GameManager.Instance.ItemManager.SpawnRandomItem(transform.position);
 
             bIsDead = true;
 

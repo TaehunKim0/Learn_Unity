@@ -1,3 +1,4 @@
+using EnumTypes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,5 +33,28 @@ public class ItemManager : MonoBehaviour
             GameObject itemPrefab = foundItem.Prefab;
             Instantiate(itemPrefab, position, Quaternion.identity);
         }
+    }
+
+    public void SpawnRandomItem(int min, int max, Vector3 position)
+    {
+        if (Random.Range(0, 3) == 0)
+        {
+            GameManager.Instance.ItemManager.SpawnItem(EnumTypes.ItemName.Refuel, position);
+            return;
+        }
+
+        if (Random.Range(min, max) == min)
+        {
+            int randomInt = Random.Range(0, 4);
+            EnumTypes.ItemName itemName = (EnumTypes.ItemName)randomInt;
+            GameManager.Instance.ItemManager.SpawnItem(itemName, position);
+        }
+    }
+
+    public void SpawnRandomItem(Vector3 position)
+    {
+        int randomInt = Random.Range(0, 4);
+        EnumTypes.ItemName itemName = (EnumTypes.ItemName)randomInt;
+        GameManager.Instance.ItemManager.SpawnItem(itemName, position);
     }
 }

@@ -1026,6 +1026,7 @@ MonoBehaviour:
   StageClearResultCanvas: {fileID: 0}
   CurrentScoreText: {fileID: 0}
   ElapsedTimeText: {fileID: 0}
+  bStageCleared: 0
 --- !u!114 &7217638748523191057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,8 +1098,10 @@ MonoBehaviour:
   - {fileID: 7087547823659818301}
   - {fileID: 7307702195788511752}
   - {fileID: 6400479139516919925}
-  CoolDownTime: 3
+  CoolDownTime: 2
   MaxSpawnEnemyCount: 2
+  BossSpawnCount: 15
+  BossA: {fileID: 4036106989566149822, guid: fade2a3e5e9974d458e0187dfb0251c4, type: 3}
 --- !u!114 &7045797727686699788
 MonoBehaviour:
   m_ObjectHideFlags: 0

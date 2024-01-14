@@ -11,8 +11,9 @@ public class PlayerHPSystem : MonoBehaviour
 
     void Start()
     {
-        MaxHealth = Health;
+        Health = GameInstance.instance.CurrentPlayerHP;
     }
+
     IEnumerator HitFlick()
     {
         int flickCount = 0; // 깜박인 횟수를 기록하는 변수
@@ -33,7 +34,9 @@ public class PlayerHPSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !GameManager.Instance.GetPlayerCharacter().Invincibility)
+        if (collision.gameObject.CompareTag("Enemy") 
+            && !GameManager.Instance.GetPlayerCharacter().Invincibility
+            && !GameManager.Instance.bStageCleared)
         {
             Health -= 1;
             StartCoroutine(HitFlick());
@@ -58,5 +61,7 @@ public class PlayerHPSystem : MonoBehaviour
             GameManager.Instance.SoundManager.PlaySFX("GetItem");
             Destroy(collision.gameObject);
         }
+
+        GameInstance.instance.CurrentPlayerHP = Health;
     }
 }

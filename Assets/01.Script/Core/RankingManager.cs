@@ -34,6 +34,35 @@ public class RankingManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void MainMenuRanking()
+    {
+        RankingCanvas.gameObject.SetActive(true);
+
+        for (int i = 0; i < 5; i++)
+        {
+            int currentScore = PlayerPrefs.GetInt(i + "BestScore");
+            string currentName = PlayerPrefs.GetString(i + "BestName");
+            if (currentName == "")
+                currentName = "None";
+
+            rankingEntries.Add(new RankingEntry(currentScore, currentName));
+        }
+
+        SortRanking();
+
+        for (int i = 0; i < Rankings.Length; i++)
+        {
+            if (i < rankingEntries.Count)
+            {
+                Rankings[i].text = $"{i + 1} {rankingEntries[i].Name} : {rankingEntries[i].Score}";
+            }
+            else
+            {
+                Rankings[i].text = $"{i + 1} -";
+            }
+        }
+    }
+
     void SetCurrentScore()
     {
         rankingEntries.Clear();

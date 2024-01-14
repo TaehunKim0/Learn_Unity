@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text CurrentScoreText;
     public TMP_Text ElapsedTimeText;
 
+    [HideInInspector] public bool bStageCleared = false;
+
     private void Awake()  // 객체 생성시 최초 실행 (그래서 싱글톤을 여기서 생성)
     {
         if (Instance == null)  // 단 하나만 존재하게끔
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
         StageClearResultCanvas.gameObject.SetActive(true);
         CurrentScoreText.text = "CurrentScore : " + score;
         ElapsedTimeText.text = "ElapsedTime : " + elapsedTime;
+
+        bStageCleared = true;
 
         // 5초 뒤에 다음 스테이지
         StartCoroutine(NextStageAfterDelay(5f));

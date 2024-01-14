@@ -10,9 +10,11 @@ public class EnemySpawnManager : BaseManager
     public int MaxSpawnEnemyCount;
 
     private int _spawnCount = 0;
-    private int _bossSpawnCount = 10;
+    public int BossSpawnCount = 10;
 
     private bool _bSpawnBoss = false;
+
+    public GameObject BossA;
 
     public override void Init(GameManager gameManager)
     {
@@ -47,10 +49,10 @@ public class EnemySpawnManager : BaseManager
 
             _spawnCount += spawnCount;
 
-            if (_spawnCount >= _bossSpawnCount)
+            if (_spawnCount >= BossSpawnCount)
             {
                 _bSpawnBoss = true;
-                //보스 스폰
+                Instantiate(BossA, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1, 0f), Quaternion.identity);
             }
         }
     }
