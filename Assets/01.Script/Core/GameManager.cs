@@ -95,4 +95,51 @@ public class GameManager : MonoBehaviour
     {
         GameInstance.instance.Score += score;
     }
+
+    private void Update()
+    {
+        // 맵 내에 모든 적 유닛 제거.
+        if (Input.GetKeyUp(KeyCode.F1))
+        {
+            // 모든 Enemy 찾기
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject obj in enemies)
+            {
+                Enemy enemy = obj?.GetComponent<Enemy>();
+                enemy?.Dead();
+            }
+        }
+
+        // 공격 업그레이드를 최고 단계로 상승
+        if (Input.GetKeyUp(KeyCode.F2))
+        {
+            GetPlayerCharacter().CurrentWeaponLevel = 3;
+            GameInstance.instance.CurrentPlayerWeaponLevel = GetPlayerCharacter().CurrentWeaponLevel;
+        }
+
+        // 스킬의 쿨타임 및 횟수를 초기화 시킨다
+        if (Input.GetKeyUp(KeyCode.F3))
+        {
+            GetPlayerCharacter().InitSkillCooldown();
+        }
+
+        // 내구도 초기화
+        if (Input.GetKeyUp(KeyCode.F4))
+        {
+            GetPlayerCharacter().GetComponent<PlayerHPSystem>().InitHealth();
+        }
+
+        // 연료 초기화
+        if (Input.GetKeyUp(KeyCode.F5))
+        {
+            GetPlayerCharacter().GetComponent<PlayerFuelSystem>().InitFuel();
+        }
+
+        // 연료 초기화
+        if (Input.GetKeyUp(KeyCode.F6))
+        {
+            StageClear();
+        }
+
+    }
 }

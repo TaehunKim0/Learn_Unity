@@ -38,4 +38,11 @@ public class BaseSkill : MonoBehaviour
         bIsCoolDown = true;
         CurrentTime = CooldownTime;
     }
+
+    public void InitCoolDown()
+    {
+        bIsCoolDown = false;
+        CurrentTime = 0;
+    }
+
 }

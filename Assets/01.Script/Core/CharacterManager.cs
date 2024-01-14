@@ -17,8 +17,4 @@ public class CharacterManager : BaseManager
         base.Init(gameManager);
         _player.Init(this);
     }
-
-    void Update()
-    {
-    }
 }

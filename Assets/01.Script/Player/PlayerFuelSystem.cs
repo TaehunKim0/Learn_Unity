@@ -14,6 +14,12 @@ public class PlayerFuelSystem : MonoBehaviour
         Fuel = GameInstance.instance.CurrentPlayerFuel;
     }
 
+    public void InitFuel()
+    {
+        Fuel = MaxFuel;
+        GameInstance.instance.CurrentPlayerFuel = Fuel;
+    }
+
     void Update()
     {
         if (GameManager.Instance.bStageCleared) return;

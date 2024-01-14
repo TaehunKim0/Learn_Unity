@@ -13,6 +13,11 @@ public class PlayerHPSystem : MonoBehaviour
     {
         Health = GameInstance.instance.CurrentPlayerHP;
     }
+    public void InitHealth()
+    {
+        Health = MaxHealth;
+        GameInstance.instance.CurrentPlayerHP = Health;
+    }
 
     IEnumerator HitFlick()
     {

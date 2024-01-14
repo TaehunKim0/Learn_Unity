@@ -112,6 +112,14 @@ public class PlayerCharacter : BaseCharacter
         }
     }
 
+    public void InitSkillCooldown()
+    {
+        foreach (var skill in Skills.Values)
+        {
+            skill.InitCoolDown();
+        }
+    }
+
     public void SetInvincibility(bool invin)
     {
         if (invin)

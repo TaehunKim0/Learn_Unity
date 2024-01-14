@@ -14,8 +14,11 @@ public class BombSkill : BaseSkill
         {
             if (obj != null)
             {
+                if (obj.GetComponent<BossA>())
+                    return;
+
                 Enemy enemy = obj.GetComponent<Enemy>();
-                if(enemy != null)
+                if (enemy != null)
                 {
                     enemy.Dead();
                 }
