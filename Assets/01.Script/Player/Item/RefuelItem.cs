@@ -10,6 +10,7 @@ public class RefuelItem : BaseItem
         if (system != null)
         {
             system.Fuel = system.MaxFuel;
+            GameInstance.instance.CurrentPlayerFuel = system.Fuel;
         }
     }
 }
