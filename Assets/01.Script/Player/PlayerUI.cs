@@ -12,6 +12,8 @@ public class PlayerUI : MonoBehaviour
     public Image BombSkill;
     public Slider FuelSlider;
 
+    public TextMeshProUGUI SkillCooldownNoticeText;
+
     private Dictionary<EnumTypes.PlayerSkill, TextMeshProUGUI> _coolDownTexts = new Dictionary<EnumTypes.PlayerSkill, TextMeshProUGUI>();
 
     private void Start()
@@ -56,4 +58,19 @@ public class PlayerUI : MonoBehaviour
     {
         FuelSlider.GetComponent<Slider>().value = GameManager.Instance.GetPlayerCharacter().GetComponent<PlayerFuelSystem>().Fuel / 100;
     }
+
+    public void NoticeSkillCooldown(EnumTypes.PlayerSkill playerSkill)
+    {
+        StartCoroutine(NoticeText(playerSkill));
+    }
+
+    IEnumerator NoticeText(EnumTypes.PlayerSkill playerSkill)
+    {
+        SkillCooldownNoticeText.gameObject.SetActive(true);
+        SkillCooldownNoticeText.text = $"{playerSkill.ToString()} Skill is Cooldown";
+
+        yield return new WaitForSeconds(3);
+
+        SkillCooldownNoticeText.gameObject.SetActive(false);
+    }    
 }

@@ -68,8 +68,8 @@ public class PlayerCharacter : BaseCharacter
     private void UpdateSkillInput()
     {
         if (Input.GetKey(KeyCode.Z)) ActivateSkill(EnumTypes.PlayerSkill.Primary);
-        if (Input.GetKey(KeyCode.X)) ActivateSkill(EnumTypes.PlayerSkill.Repair);
-        if (Input.GetKey(KeyCode.C)) ActivateSkill(EnumTypes.PlayerSkill.Bomb);
+        if (Input.GetKeyUp(KeyCode.X)) ActivateSkill(EnumTypes.PlayerSkill.Repair);
+        if (Input.GetKeyUp(KeyCode.C)) ActivateSkill(EnumTypes.PlayerSkill.Bomb);
     }
 
     private void InitializeSkills()
@@ -101,7 +101,14 @@ public class PlayerCharacter : BaseCharacter
         if (Skills.ContainsKey(skillType))
         {
             if (Skills[skillType].IsAvailable())
+            {
                 Skills[skillType].Activate();
+            }
+            else
+            {
+                if(skillType != EnumTypes.PlayerSkill.Primary)
+                    GetComponent<PlayerUI>().NoticeSkillCooldown(skillType);
+            }
         }
     }
 
